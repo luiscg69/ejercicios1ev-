@@ -39,13 +39,13 @@ public class Sueldo {
 	
 	System.out.println();
 	
-	System.out.printf("Usted este mes ha facturado: %.2f \u20ac\n\n", TotalVentas);
+	System.out.printf("Usted este més ha facturado: %.2f \u20ac\n\n", TotalVentas);
 	
 	System.out.printf("Su comisión del 10 por ciento de las ventas, este més asciende a: %.2f \u20ac\n\n", ComisionVentas);
 	
 	System.out.printf("Este més su Salario Total es de: %.2f \u20ac\n", SalarioTotal);
 	
-	
+	input.close();
 	}
 
 }
