@@ -1,17 +1,19 @@
 package unidad3;
 
+
 import java.util.Scanner;
 
-public class Hora {
+public class Hora1 {
 
 
 	public static void main(String[] args) {
 		// Created by Luis Cortés
-		// Date: 04-11-2019
+		// Version 2
+		// Date: 11-11-2019
 		
 		//Calculo y salida por pantalla de la (Hora, Minuto y Segundo) introducidos por consola sumando un segundo,
 		
-		
+		//Vamos a utilizar los condicionales y variable de modo mas eficiente.
 		//vamos a utilizar la clase Scanner para introducir primero las Horas, luego los Minutos y Luego los Segundos.
 		
 		Scanner input = new Scanner (System.in);
@@ -71,56 +73,36 @@ public class Hora {
 			
 		
 		/* Tenemos que tener en cuenta que si los segundos iniciales introducidos son 59
-		 * y les sumamos 1, los segundos finales serán (59 + 1 = 60 segundos) los 0 segundos y hay
+		 * y les sumamos 1, los segundos finales serán (59 + 1 = 60 segundos) son  0 segundos y hay
 		 * que sumarle 1 minuto a los minutos iniciales.
+		 * Si los minutos en el caso de sumarles 1 son (59 + 1 = 60 minutos) son 0 minutos y hay
+		 * que sumarle 1 hora a las horas iniciales.
+		 * Si loas Horas en el caso de sumarles 1 sean (23 + 1 = 24 horas ) son las 0 horas
 		 */
 			
-			int segundoF = segundoI + 1; //sumo 1 segundo a los segundos iniciales
-			int minutoExtra =0; //inicio una variable igual a 0, que será la que incrementara en 1 los minutos, si los segundos finales sumasen 60
 			
-				// Si los segundos finales son 60 les doy el valor de 0 y los minutos extras son de 1
-				if (segundoF == 60){
-				    segundoF = 0;
-				    minutoExtra=1;
-				}		
+		//sumo 1 a los segundo Iniciales
+		 segundoI =  segundoI +  1; 
+					   
+			if (segundoI > 59){
+				    segundoI = 0;
+				    	minutoI=minutoI+1;
+				}		if(minutoI > 59) {
+					       minutoI = 0;
+						    	horaI= horaI+1;
+						}		if(horaI > 23) {
+									horaI = 0;	
+									}
 
 		
-			/* Tenemos que tener en cuenta que si los minutos iniciales introducidos son 59
-			 * y si el minutoextra es 1, los minutos finales serán (59 + 1 = 60 minutos) los 0 minutos y hay
-			 * que sumarle 1 hora a las horas iniciales.
-			*/
 			
-			int minutoF = minutoI + minutoExtra; //sumo minutosExtra a los minutos iniciales
-			int horaExtra = 0; // inicio una variable igual a 0, que será la que incrementara en 1 las horas, si los minutos finales sumasen 60
-		
-						
-				// Si los minutos finales son 60 les doy el valor de 0 y las horas extras son de 1
-				if (minutoF == 60){
-				    minutoF = 0;
-				    horaExtra=1;
-				}
-						
-				
-				
-				
-				/* Tenemos que tener en cuenta que si las horas iniciales introducidos son 23
-				 * y si la horaextra es 1, las horas finales serán (23 + 1 = 24 horas) las 0 horas
-				 */
-				
-				// Si las horas finales son 24 les doy el valor de 0.
-				int horaF = horaI + horaExtra;
-								
-					if (horaF == 24){
-					    horaF = 0;
-					}
-					
-					
 	System.out.println();	
 	
 	//El resultado lo saco por pantalla con el formato de horas (hh:mm:ss)
 	
-	System.out.printf("La hora que usted introdujo eran las \u0028%02.0f\u003a%02.0f\u003a%02.0f\u0029\nUn segundo despues son las \u0028%02.0f\u003a%02.0f\u003a%02.0f\u0029\n" ,(float) horaI, (float) minutoI, (float) segundoI, (float) horaF, (float) minutoF, (float) segundoF);		
+	System.out.printf("Un segundo despues a la hora que usted introdujo son las %02.0f : %02.0f : %02.0f",(float) horaI, (float) minutoI, (float) segundoI);		
 	
 	input.close();
 	}		
 }
+
