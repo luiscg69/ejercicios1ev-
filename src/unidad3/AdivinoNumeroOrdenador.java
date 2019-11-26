@@ -42,7 +42,7 @@ public class AdivinoNumeroOrdenador {
 			System.out.println("¿Quieres jugar a adivinar un número? (si/no)");
 
 			jugar = input.next();// jugar toma el valor introducido por el usuario por la consola, recordemos que
-									// jugar es una String
+										// jugar es una String
 
 			// Si la respuesta no es igual a si y no es igual a no entonces la consola nos
 			// dice que la respuesta es incorrecta.
@@ -65,102 +65,159 @@ public class AdivinoNumeroOrdenador {
 					 * pregunte y que ira cambiando si decimos que un numero es menor
 					 */
 
-		System.out.print("\nPiensa un número mayor que 0.\nDime un número MAYOR al que pensaste: ");
+		System.out.print("\nPiensa un número.\nDime un número mayor o igual al que pensaste: ");
 
-		max = input.nextInt();//
+		max = input.nextInt();// En este momento el número pensado tiene que estar entre 1 y el número max
+								// (incluidos)
 
-		System.out.println("\nEl número que pensaste está entre 0 y " + max);
+		System.out.println("\nEl número que pensaste está entre 1 y " + max);
+
+		int pensado;// este será el numero pensado
 
 		int maxv = max; // este será el número aleatorio maximo del rango que ira cada tomado vez que
 						// contestemos
 
 		int minv = 1;// este será el número mínimo del rango que ira tomando cada vez que contestemos
 
+		// queremos jugar o no
+		// Vamos ha hacer un do while mientras
+
+		// como
+
 		int Nadivino;
 
-		int Rsuperior = r.nextInt(maxv - minv);
-
-		Nadivino = minv + Rsuperior;
-
+        int Rsuperior = r.nextInt(maxv + 1 - minv);	
+		
+		Nadivino = minv + Rsuperior;/*
+											 * Numero que calcula el ordenador dentro del rango
+											 * 
+											 * 
+											 * El ordenador nos tiene que dar un número aleatorio entre 1 y
+											 * nextInt(numero) dentro de la clase Random nos da un numero aleatorio
+											 * entre 0 y el numero entre parentisis menos 1 Necesitamos un numero
+											 * aleatorio entre 1.000 y 100.000 incluidos Sabemos que si hacemos un
+											 * Random nos va a generar numeros del 0 al numero que digamos menos 1 El
+											 * numero minimo aleatorio debe ser 1000 por lo tanto a este le tendremos
+											 * que sumar numeros aleatorios entre 0 y 99.000 Porque si 1000 le sumamos
+											 * 0, será 1000 y si a 1000 le sumamos 99.000 sera 100.000, pero
+											 * nextInt(numero) nos dará un numero menos le tendremos que poner 99.001
+											 */
 		String respuesta; // la respuesta del usuario solo puede ser acierto, mayor o menor
 		do {
 
-			String enganas = "No";// Si me engaña
+		
+		String enganas ="No";// Si me engaña
+		
+		do {
+			
+			
+			
+			
+			
+			
+			System.out.println(Nadivino + " " + minv + " " + maxv +" "+Rsuperior);
 
-			do {
+			System.out.println("\nCreo que el número que pensaste es el " + Nadivino);
 
-				// System.out.println("\nNadivino antes de adivinar =" + Nadivino + " minv= " +
-				// minv + " maxv= " + maxv + " Rsuperior= " + Rsuperior);
+			System.out.println("\nSi acerte escribe: acierto");
+			System.out.println("Si es mayor escribe: mayor");
+			System.out.println("Si es menor escribe: menor");
 
-				System.out.println("\n*Creo que el número que pensaste es el " + Nadivino);
+			System.out.print("\n¿Cual es tu respuesta? :");
+			respuesta = input.next();
 
-				// System.out.println("\nNadivino despues de adivinar =" + Nadivino + " minv= "
-				// + minv + " maxv= " + maxv + " Rsuperior= " + Rsuperior);
-
-				System.out.println("\nSi acerte escribe: acierto");
-				System.out.println("Si es mayor escribe: mayor");
-				System.out.println("Si es menor escribe: menor");
-
-				System.out.print("\n¿Cual es tu respuesta? :");
-				respuesta = input.next();
-
-				if (!respuesta.equals("acierto") && !respuesta.equals("mayor") && !respuesta.equals("menor")) {
-
-					System.out.println("\nNo escribiste bien tu respuesta");
-				}
-
-				if ((respuesta.equals("menor") || respuesta.equals("mayor"))
-						&& ((Nadivino == maxv - 1) && (Nadivino == minv))) {
-
-					System.out.println("\nMe estas engañando el numero " + Nadivino
-							+ " es el que habías pensado. deberias haber contestado: acierto");
-					enganas = ("no");
-					respuesta = ("acierto");
-				} else {
-
-					if (respuesta.equals("mayor") && Nadivino + 1 == maxv) {
-						System.out.println(
-								"\n*Me estas engañando el número que pensaste no puede ser superior a " + Nadivino);
-						enganas = ("si");
-
-					}
-
-					else if (respuesta.equals("menor") && Nadivino <= minv) {
-						System.out.println(
-								"\n*Me estas engañando el número que pensaste no puede ser inferior a " + minv);
-						enganas = ("si");
-					}
-
-				}
-
-			} while ((!(respuesta.equals("acierto") || respuesta.equals("mayor") || respuesta.equals("menor"))
-					|| enganas.equals("si")));
-
-			if (respuesta.equals("mayor")) {
-				minv = Nadivino + 1;
-
-				Rsuperior = r.nextInt(maxv - minv);
-				Nadivino = minv + Rsuperior;
-
-				// System.out.println("\nNadivino despues de mayor ok=" + Nadivino + " minv= " +
-				// minv + " maxv= " + maxv + " Rsuperior= " + Rsuperior);
+			if (!respuesta.equals("acierto") && !respuesta.equals("mayor") && !respuesta.equals("menor")) {
+				
+			System.out.println("No escribiste bien tu respuesta");
 			}
+		
 
-			else if (respuesta.equals("menor")) {
-				maxv = Nadivino;
+		
+		if (respuesta.equals ("mayor") && Nadivino == Rsuperior) {
+		System.out.println("Me estas engañando el número que pensaste no puede ser superior a"+ Rsuperior);
+		 enganas = ("si"); 
+		}
+		
+		if (respuesta.equals ("menor") && Nadivino == minv) {
+			System.out.println("Me estas engañando el número que pensaste no puede ser inferior a"+ minv);
+			enganas = ("si"); 
+		}
+		
+				
+		} while ((!( respuesta.equals("acierto") || respuesta.equals("mayor") || respuesta.equals("menor")) || enganas.equals("si")));	
+			
+		
+		if (respuesta.equals("mayor")){
+			minv = Nadivino;
+			
+			Rsuperior = r.nextInt(maxv + 1 - minv);	
+			Nadivino = minv + Rsuperior;
+												 
+		}
+		
+		if (respuesta.equals("menor")){
+			maxv = Nadivino;
+		    
+		    Rsuperior = r.nextInt(maxv + 1 - minv);	
+			Nadivino = minv + Rsuperior;
+		
+		}
+		
+	} while (!(respuesta.equals("acierto")));	
+		
+		System.out.println("he acertado el número que pensaste era el "+ respuesta);
+		
+		//respuesta.equals("acierto") ||
+			
+		// } while (!(respuesta.equals ("acierto")));
 
-				Rsuperior = r.nextInt(maxv - minv);
-				Nadivino = minv + Rsuperior;
-				// System.out.println("\nNadivino despues de menor ok=" + Nadivino + " minv= " +
-				// minv + " maxv= " + maxv + " Rsuperior= " + Rsuperior);
-			}
-
-		} while (!(respuesta.equals("acierto")));
-
-		System.out.println("\nHe acertado el número que pensaste, era el " + Nadivino);
-
-		input.close(); // cerramos Scanner
-
+		/*
+		 * 
+		 * int n; // definimos una variable entera n que será el numero aleatorio entre
+		 * 1 y el // numero aletorio max calculado anteriormente
+		 * 
+		 * n = 1 + r.nextInt(max); como el Ramdon con nextInt(numero) va desde 0 al
+		 * numero menos 1, el minimo que necesitamos es 1 y el maximo el max calculado
+		 * entoces n sera 1 más un numero aletatorio entre 0 y el numero maximo menos 1
+		 * 
+		 * int nu; // declaramos una varible entera que será el número que va ser el
+		 * número que // introduzcamos mediante la clase Scanner
+		 * 
+		 * // vamos hacer un bucle do while que mientras el numero introducido por el //
+		 * ususario no sea igual al que penso el ordenador nos siga preguntando
+		 * 
+		 * do { System.out.printf("¿Qué número estoy pensando entre 1 y %d? ", max); //
+		 * Nos pregunta que numero ha // pensado el ordenador entre 1 // y max que es el
+		 * primer // aleatorio nu = input.nextInt(); // valor del numero entero
+		 * introducido por el usuario
+		 * 
+		 * // hacemos un condicional si el segundo numero aleatorio n es mayor al //
+		 * introducido o el numero aleatorio n es menor nos lo diga
+		 * 
+		 * if (n > nu) System.out.println("El número que estoy pensando es mayor"); else
+		 * if (n < nu) System.out.println("El número que estoy pensando es menor");
+		 * 
+		 * } while (n != nu); // while mientras el número aleatorio sea distinro al
+		 * introducido
+		 * 
+		 * // una vez acertado el numero, nos lo comunica y nos pregunta // recordemos
+		 * que todavia estamos del while que se ejecutara mientras jugar es // Si
+		 * System.out.
+		 * println("Felicidades, has acertado. ¿Quieres jugar otra vez? (si/no)"); jugar
+		 * = input.next();
+		 * 
+		 * } // Cerramos el while que se saldra de el cuando el usuario diga algo
+		 * distinto a // si, a la pregunta de si quiere jugar
+		 * 
+		 * // el usuario respondio que no queria jugar en un principio o salio del bucle
+		 * // while respondiendo que no queria seguir jugando
+		 * 
+		 * System.out.println("Muchas gracias, espero verle pronto.");
+		 * 
+		 * input.close(); // cerramos Scanner
+		 * 
+		 */
 	}
 
+	
 }
