@@ -3,7 +3,7 @@ package unidad3;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Dado {
+public class Dado_Usando_switch_case {
 
 	public static void main(String[] args) {
 		// Created by Luis Cortés
@@ -69,35 +69,36 @@ public class Dado {
 			// dependiendo el numero que salga en cada una de las tiradas
 			// Sumaremos a las veces que salio ese numero en cada momento 1 unidad
 
-			// utilizaremos un condicional if, se podría tambien utilizar un switch case
+			// En este caso utilizaremos la estructura switch case
 
-			if (numerosacado == 1) {
+			switch (numerosacado) {
+
+			case 1:
 				uno = uno + 1;
+				break;
 
-			}
-
-			else if (numerosacado == 2) {
+			case 2:
 				dos = dos + 1;
+				break;
 
-			}
-
-			else if (numerosacado == 3) {
+			case 3:
 				tres = tres + 1;
+				break;
 
-			}
-
-			else if (numerosacado == 4) {
+			case 4:
 				cuatro = cuatro + 1;
+				break;
 
-			}
-
-			else if (numerosacado == 5) {
+			case 5:
 				cinco = cinco + 1;
+				break;
 
-			}
-
-			else if (numerosacado == 6) {
+			case 6:
 				seis = seis + 1;
+				break;
+
+			default:
+				System.out.println("Hay un error es la tirada");
 
 			}
 
@@ -117,8 +118,8 @@ public class Dado {
 
 		System.out.println("");
 		System.out.println("Muchas gracias por jugar, espero verte pronto.");
-		
-	input.close();	
+
+		input.close();
 	}
 
 }
